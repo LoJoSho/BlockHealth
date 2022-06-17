@@ -1,0 +1,8 @@
+name: BlockHealth
+version: '${project.version}'
+main: me.lojosho.blockhealth.BlockHealthPlugin
+api-version: 1.18
+authors: [ LoJoSho ]
+commands:
+  blockhealth:
+    description: Default comamnd for the Block Health Plugin

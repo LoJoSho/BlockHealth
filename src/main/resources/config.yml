@@ -1,0 +1,36 @@
+Config:
+  debug: false
+  RestrictBlockPlace: false # If set to true, only blocks with health can be placed.
+  RestrictToolUsage: false # If set to true, only tools that are set to do damage can be used
+  restrictBlockBreak: false # If set to true, only blocks that have health set will be broken
+
+Blocks:
+  OAK_PLANKS:
+    HEALTH: 250
+  COBBLESTONE:
+    HEALTH: 500
+  IRON_BLOCK:
+    HEALTH: 1000
+  DIAMOND_BLOCK:
+    HEALTH: 2000
+Tools:
+  AIR:
+    DAMAGE: 1
+  WOODEN_PICKAXE:
+    DAMAGE: 10
+  STONE_PICKAXE:
+    DAMAGE: 20
+  IRON_PICKAXE:
+    DAMAGE: 30
+  DIAMOND_PICKAXE:
+    DAMAGE: 40
+  NETHERITE_PICKAXE:
+    DAMAGE: 50
+OtherDamage:
+  Explosion: 100
+Messages:
+  UseActionBarForMessages: true
+  CantBreak: "<RED>You can't break this block!"
+  CantPlace: "<RED>You can't place this block!"
+  FinalHealth: "<WHITE>Block Health: <RED><health>"
+  ReportHealth: "<WHITE>Block Health: <RED><health>"
