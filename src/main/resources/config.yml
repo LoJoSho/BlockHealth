@@ -34,3 +34,4 @@ Messages:
   CantPlace: "<RED>You can't place this block!"
   FinalHealth: "<WHITE>Block Health: <RED><health>"
   ReportHealth: "<WHITE>Block Health: <RED><health>"
+  debugHealth: "<GREEN> Health: <health> <GRAY><blockstring>"

@@ -73,9 +73,8 @@ public class BlockListener implements Listener {
             return;
         }
 
-        if (!customBlockData.has(key, PersistentDataType.INTEGER)) {
-            return;
-        }
+        if (!customBlockData.has(key, PersistentDataType.INTEGER)) return;
+
         health = customBlockData.get(key, PersistentDataType.INTEGER);
 
         if (HealthBlocks.getBlockDefaultHealth(mat) > health) {
@@ -116,16 +115,21 @@ public class BlockListener implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
     public void playerInteraction(PlayerInteractEvent event) {
 
-        if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.BLAZE_ROD)) {
-            if (event.getClickedBlock() == null) {
-                return;
-            }
+        player = event.getPlayer();
+
+        if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && player.getInventory().getItemInMainHand().getType().equals(Material.BLAZE_ROD)) {
+            if (event.getClickedBlock() == null) return;
+
             PersistentDataContainer customBlockData = new CustomBlockData(event.getClickedBlock(), BlockHealthPlugin.getInstance());
-            if (!customBlockData.has(key, PersistentDataType.INTEGER)) {
-                return;
-            }
+
+            if (!customBlockData.has(key, PersistentDataType.INTEGER)) return;
+
             if (event.getPlayer().isOp()) {
-                event.getPlayer().sendMessage("DEBUG:" + event.getClickedBlock().toString() + " Health: " + customBlockData.get(key, PersistentDataType.INTEGER));
+                placeholders =
+                        TagResolver.resolver(Placeholder.parsed("blockstring", event.getClickedBlock().toString()),
+                        TagResolver.resolver(Placeholder.parsed("health", String.valueOf(customBlockData.get(key, PersistentDataType.INTEGER)))));
+
+                SendMessageUtil.sendMessage("Messages.debugHealth", event.getPlayer(), placeholders);
             } else {
                 placeholders =
                         TagResolver.resolver(Placeholder.parsed("health", String.valueOf(customBlockData.get(key, PersistentDataType.INTEGER))));
