@@ -47,7 +47,7 @@ public class BlockListener implements Listener {
 
         if (BlockHealthPlugin.restrictBlockPlace()) {
             if (!HealthBlocks.getBlocks().contains(mat)) {
-                SendMessageUtil.sendMessage("Messages.CantPlace", player);
+                SendMessageUtil.sendMessage("Messages.cantPlace", player);
                 event.setCancelled(true);
                 return;
             }
@@ -68,7 +68,7 @@ public class BlockListener implements Listener {
         mat = event.getBlock().getType();
 
         if ((!HealthBlocks.getBlocks().contains(mat) && BlockHealthPlugin.restrictBlockBreak()) && (BlockHealthPlugin.restrictToolUsage() && !ToolsDamage.getTools().contains(player.getInventory().getItemInMainHand().getType()))) {
-            SendMessageUtil.sendMessage("Messages.CantBreak", player);
+            SendMessageUtil.sendMessage("Messages.cantBreak", player);
             event.setCancelled(true);
             return;
         }
@@ -85,7 +85,7 @@ public class BlockListener implements Listener {
             customBlockData.set(key, PersistentDataType.INTEGER, health);
             placeholders =
                     TagResolver.resolver(Placeholder.parsed("health", String.valueOf(health)));
-            SendMessageUtil.sendMessage("Messages.FinalHealth", player, placeholders);
+            SendMessageUtil.sendMessage("Messages.finalHealth", player, placeholders);
             event.setCancelled(true);
         }
     }
@@ -100,7 +100,7 @@ public class BlockListener implements Listener {
                 PersistentDataContainer customBlockData = new CustomBlockData(iter.next(), BlockHealthPlugin.getInstance());
                 if (customBlockData.has(key, PersistentDataType.INTEGER)) {
                     int health = customBlockData.get(key, PersistentDataType.INTEGER);
-                    int finalhealth = health - BlockHealthPlugin.getInstance().getConfig().getInt("OtherDamage.Explosion");
+                    int finalhealth = health - BlockHealthPlugin.getInstance().getConfig().getInt("OtherDamage.Explosion", 0);
                     if (finalhealth > 0) {
                         customBlockData.set(key, PersistentDataType.INTEGER, finalhealth);
                         iter.remove();
@@ -133,7 +133,7 @@ public class BlockListener implements Listener {
             } else {
                 placeholders =
                         TagResolver.resolver(Placeholder.parsed("health", String.valueOf(customBlockData.get(key, PersistentDataType.INTEGER))));
-                SendMessageUtil.sendMessage("Messages.ReportHealth", event.getPlayer(), placeholders);
+                SendMessageUtil.sendMessage("Messages.reportHealth", event.getPlayer(), placeholders);
             }
         }
     }

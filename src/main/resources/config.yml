@@ -30,8 +30,8 @@ OtherDamage:
   Explosion: 100
 Messages:
   UseActionBarForMessages: true
-  CantBreak: "<RED>You can't break this block!"
-  CantPlace: "<RED>You can't place this block!"
-  FinalHealth: "<WHITE>Block Health: <RED><health>"
-  ReportHealth: "<WHITE>Block Health: <RED><health>"
+  cantBreak: "<RED>You can't break this block!"
+  cantPlace: "<RED>You can't place this block!"
+  finalHealth: "<WHITE>Block Health: <RED><health>"
+  reportHealth: "<WHITE>Block Health: <RED><health>"
   debugHealth: "<GREEN> Health: <health> <GRAY><blockstring>"
