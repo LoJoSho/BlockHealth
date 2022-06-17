@@ -13,7 +13,7 @@ Decide this plugin isn't for you? Just remove it, no errors, no problems.
 
 This plugin uses [MiniMessage](https://docs.adventure.kyori.net/minimessage/format.html), which is much more powerful, including support for RGB, hover, and cool features that allow you to bring the full potential out.
 
-*How do I add more blocks?*
+### How do I add more blocks?
 
 You can add more Minecraft blocks by heading to [config.yml](https://github.com/LoJoSho/BlockHealth/blob/master/src/main/resources/config.yml).
 ```yml
